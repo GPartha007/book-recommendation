@@ -5,10 +5,11 @@ import string
 
 app = Flask(__name__)
 
-top_50_books = pickle.load(open("top_50.pkl", "rb"))
-final_filtered = pickle.load(open("final_filtered.pkl", "rb"))
-books_df = pickle.load(open("books_df.pkl", "rb"))
-similarity_scores = pickle.load(open("sim_scores.pkl", "rb"))
+book_names_new = pickle.load(open("C:/Users/hp/Downloads/ML-Projects/Book-recc-sys/book_names_new.pkl", "rb"))
+top_50_books = pickle.load(open("C:/Users/hp/Downloads/ML-Projects/Book-recc-sys/top_50.pkl", "rb"))
+final_filtered = pickle.load(open("C:/Users/hp/Downloads/ML-Projects/Book-recc-sys/final_filtered.pkl", "rb"))
+books_df = pickle.load(open("C:/Users/hp/Downloads/ML-Projects/Book-recc-sys/books_df.pkl", "rb"))
+similarity_scores = pickle.load(open("C:/Users/hp/Downloads/ML-Projects/Book-recc-sys/sim_scores.pkl", "rb"))
 
 
 @app.route("/")
@@ -47,8 +48,8 @@ def Recommend_book(title):
             data.append(items)
         return data
     else:
-        status = False
-        return status
+        # status = False
+        return False
 
 
 
@@ -77,15 +78,16 @@ def search_text():
 
 @app.route("/recommendations")
 def recommendation():
-    book_names = list(final_filtered.index)
-    data = []
-    for x in book_names:
-        items   = []
-        temp_df = books_df[books_df["Book-Title"] == x]
-        items.extend(list(temp_df.drop_duplicates("Book-Title")["Book-Title"].values))
-        data.append(items)
+    # book_names = list(final_filtered.index)
+    # data = []
+    # for x in book_names:
+    #     items   = []
+    #     temp_df = books_df[books_df["Book-Title"] == x]
+    #     items.extend(list(temp_df.drop_duplicates("Book-Title")["Book-Title"].values))
+    #     data.append(items)
 
-    return render_template("recommend.html", book_list = data)
+    # return render_template("recommend.html", book_list = data)
+    return render_template("recommend.html", book_list = book_names_new)
 
 @app.route("/recommend", methods = ["POST", "GET"])
 def recommend_ajax():
