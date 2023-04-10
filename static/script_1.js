@@ -1,5 +1,6 @@
 $(document).ready(function () {
     $("#rec_not_found").hide()
+    $("#spinner").hide()
 
     /*let text = 'ABCDskdjfskd \n' +
     'Hello world'
@@ -7,6 +8,7 @@ $(document).ready(function () {
 
     $("#book_names_id").on("change", function () {
         book_name = $(this).val()
+        $("#spinner").show()
         console.log(book_name)
         ajax_data = {
             "book_name": book_name
@@ -22,9 +24,11 @@ $(document).ready(function () {
                     $("#rec_not_found").show()
                     $("#rec_not_found").html("&#128531; No Recommendations Found")
                     $("#rec_books").hide()
+                    $("#spinner").hide()
                 } else {
                     $("#rec_not_found").hide()
                     $("#rec_books").show()
+                    $("#spinner").hide()
                     arr = []
                     for (var i = 0; i < response.result.length; i++) {
                         arr.push(response.result[i])

@@ -28,6 +28,7 @@
 
     <script src="static/script.js"></script>
     <script src="static/script_1.js"></script>
+    
 
 </head>
 
@@ -66,7 +67,7 @@
                     {% for i in range(0, book_list|length) %}
                     <option value="{{ book_list[i][0] }}">
                         {% if book_list[i][0]|length <= 80: %} 
-                        {{ book_list[i][0] }} 
+                        {{ book_list[i][0] }}
                         {% else %} 
                         {{ book_list[i][0][:77] }}... 
                         {%endif%}
@@ -77,28 +78,10 @@
             </span>
         </div>
     </div>
-    <!-- Navbar End-->
-    <!-- <div class="container">
-        <div class="row" style="margin-top:220px;color: white;">
-            <div class="col-sm-2">
-                <div class="outer_1" style="height: 375px;">
-                    <div class="img">
-                        <img src="http://images.amazon.com/images/P/0345313860.01.MZZZZZZZ.jpg" alt="books" width="100%" height="200px">
-                    </div>
-                    <div class="inner_1">
-                        <div class="inner_text" title="">
-                            <b>Title: </b>
-                            <p> 1984 </p>
-                        </div>
-                        <div class="inner_text">
-                            <b>Author:</b>
-                            <p>XYZ</p>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div> -->
+
+    <div id="spinner" style="margin-top: 418px;text-align:center;">
+        <img src="{{ url_for('static', filename='loading.gif') }}" alt="Loading..." class="spinner" width="70">
+    </div>
 
     <div class="container">
         <div class="row" id="rec_books" style="margin-top:220px;color: white;">
