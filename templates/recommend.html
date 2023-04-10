@@ -79,8 +79,10 @@
         </div>
     </div>
 
-    <div id="spinner" style="margin-top: 418px;text-align:center;">
-        <img src="{{ url_for('static', filename='loading.gif') }}" alt="Loading..." class="spinner" width="70">
+    <div id="spinner_outer" style="display:none;">
+        <div id="spinner" style="margin-top: 320px;text-align:center;">
+            <img src="{{ url_for('static', filename='loading.gif') }}" alt="Loading..." class="spinner" width="70">
+        </div>
     </div>
 
     <div class="container">
